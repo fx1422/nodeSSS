@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+<div id="wrapper" class="content">
+    <div class="box">
+        <div class="item-1">
+            <div class="left"><img src="img/index/login.png" alt=""></div>
+            <div class="right"><span>个人账户 (元)</span><span class="balance">0.00</span></div>
+        </div>
+
+        <div class="item-2">
+            <div class="active"><i class="iconfont icon-chongzhijilu"></i><span>充值</span></div>
+            <div><i class="iconfont icon-tixian1"></i><span>提现</span></div>
+        </div>
+        <div class="item-3 scanQR">
+            <i class="iconfont icon-weixin"></i><span>关注公众号</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+        <div class="item-4 historicTrade">
+            <i class="iconfont icon-lishijiaoyi1 blue"></i><span>交易历史</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+        <div class="item-5 incomeDetails">
+            <i class="iconfont icon-zhangdanmingxi red"></i><span>收支明细</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+        <div class="item-6 help">
+            <i class="iconfont icon-bangzhu brown"></i><span>帮助</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+        <div class="item-7 setting">
+            <i class="iconfont icon-shezhi blue"></i><span>设置</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+        <div class="item-8  applyAgent">
+            <i class="iconfont icon-zhanghu green"></i><span>申请经纪人</span><i class="iconfont icon-xiangyou"></i>
+        </div>
+    </div>
+</div>
+<div class="weChat">
+    <div class="top"><span>扫描二维码关注公众号</span><i class=" close iconfont icon-ddqx"></i></div>
+    <div class="box">
+        <img src="img/wechat.png" alt="">
+        <div class="close">关闭</div>
+    </div>
+</div>
+<div class="back-drop"></div>
+
+<div class="tab">
+    <ul>
+        <li>
+            <i class=" iconfont icon-shouye"></i>
+            <span>首页</span>
+        </li>
+        <li>
+            <i class="iconfont icon-chicang"></i>
+            <span>持仓</span>
+        </li>
+        <li class="active">
+            <i class="iconfont icon-wode"></i>
+            <span>我的</span>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="libs/jquery-1.11.3.js"></script>
+<script src="libs/common.js"></script>
+<script src="libs/iscroll-lite.js"></script>
+<script>
+    window.onload = function () {
+        const myScroll = new IScroll("#wrapper",{click:true,tap:true});
+        myScroll.refresh();
+    };
+    $(function () {
+        //关注微信公众号
+        $('.scanQR').on('click', function () {
+            $('.back-drop').show();
+            $('.weChat').slideDown()
+        });
+        $('.close').on('click', function () {
+            $('.weChat').slideUp(function () {
+                $('.back-drop').hide();
+            });
+        });
+        //交易历史------
+        $('.historicTrade').on('click', function () {
+            location.href = 'historicTrade.html'
+        });
+        //收支明细
+        $('.incomeDetails').on('click',function () {
+            location.href='incomeDetails.html'
+        });
+        //设置
+        $('.setting').on('click',function () {
+            location.href='setting.html'
+        })
+        //申请经纪人
+        $('.applyAgent').on('click',function () {
+            location.href='applyAgent.html'
+        })
+        //帮助
+        $('.help').on('click',function () {
+            location.href='help.html'
+        })
+        //充值||||提现
+
+
+    })
+</script>
+</html>

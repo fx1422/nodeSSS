@@ -1,0 +1,118 @@
+@import "variable";
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  font-family: "Helvetica,Arial,'宋体',sans-serif";
+}
+
+html, body, ul, img {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+.content {
+  height: $contentHeight;
+  max-width: 640px;
+  margin: auto;
+  background-color: $backgroudColor;
+}
+.tips{
+  position: absolute;
+  top:0;
+  height: 4vh;
+  width:80%;
+  left: 0;
+  right:0;
+  margin: auto;
+  background-color: #64B3F0;
+  max-width: 600px;
+  font-size: $fontSize-s-l;
+  text-align: center;
+  color: $colorWhite;
+  line-height: 4vh;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius:4px;
+  display: none;
+  opacity: 0.8;
+  z-index: 999;
+}
+.loading{
+  position: absolute;
+  height:82vh;
+  z-index: 800;
+  background-color: #5E4674;
+  opacity: 0.6;
+  top:11vh;
+  text-align: center;
+  width:100vw;
+  max-width: 640px;
+  display: none;
+  img{
+    width:8rem;
+    position: absolute;
+    z-index:850 ;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+  }
+}
+
+.animation-show {
+  animation-name: show;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  -webkit-animation-name: show;
+  -webkit-animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+  animation-timing-function:linear
+}
+.animation-hide{
+  animation-name: hide;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  -webkit-animation-name: hide;
+  -webkit-animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+  animation-timing-function:linear
+  
+}
+@keyframes show {
+  0% {
+	transform: scale(0.2);
+  }
+  50% {
+	transform: scale(1.1);
+	
+  }
+  100% {
+	transform: scale(1);
+  }
+}
+@keyframes hide {
+  0% {
+	transform: scale(1);
+  }
+  25% {
+	transform: scale(0.75);
+	
+  }
+  50% {
+	transform: scale(0.5);
+	
+  }
+  75% {
+	transform: scale(0.25);
+	
+  }
+  100% {
+	transform: scale(0);
+  }
+}
