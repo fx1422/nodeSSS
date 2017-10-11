@@ -9,5 +9,22 @@
     "express-static": "^1.2.4",
     "multer": "^1.3.0",
     "mysql": "^2.15.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "nodestock",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fx1422/nodeStock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fx1422/nodeStock/issues"
+  },
+  "homepage": "https://github.com/fx1422/nodeStock#readme",
+  "description": ""
 }

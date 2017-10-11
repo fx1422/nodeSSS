@@ -67,9 +67,8 @@
     function showList() {
         $.ajax({
             url: '/income/getData',
-            data: dataValue,
-            dataType: 'json',
-            callback: 'cb',
+            data: {'type': dataValue},
+            type: 'post',
             beforeSend: function () {
                 $('.loading').show();
             },
@@ -78,13 +77,16 @@
                 let value = '';
                 let list = '';
                 for (let i = 0; i < data.length; i++) {
-                    if (data[i].money > 0) {
-                        type = 'red';
-                        value = '+'
-                    } else {
-                        type = 'green';
-                        value = ''
+                    if(data[i].code==='jjr'){
+                        if (data[i].money > 0) {
+                            type = 'red';
+                            value = '+'
+                        } else {
+                            type = 'green';
+                            value = ''
+                        }
                     }
+
                     list += `<div class="item"><span>${time2date(data[i].time)}</span><span class=${type}>${value}${data[i].money}</span><span>${data[i].total}</span></div>`
                 }
                 $('.box').empty().append(list);

@@ -12,19 +12,19 @@
 <body>
 <div class="content">
     <div class="item">
-        <span>手机号</span><input  type="number" placeholder="请输入手机号">
+        <span>手机号</span><input class="tel" type="number" placeholder="请输入手机号">
     </div>
     <div class="item">
-        <span>密码</span><input  type="password" placeholder="请输入登录密码">
+        <span>密码</span><input class="password" type="password" placeholder="请输入登录密码">
     </div>
     <div class="item">
-        <span>确认密码</span><input  type="password" placeholder="请确认密码">
+        <span>确认密码</span><input type="password" placeholder="请确认密码">
     </div>
     <div class="item">
-        <span>邀请码</span><input  type="text" value="JJR00234" readonly>
+        <span>邀请码</span><input class="inviteCode" type="text" value="JJR00234" readonly>
     </div>
     <div class="item">
-        <span>验证码</span><input  type="text" placeholder="请输入验证码">
+        <span>验证码</span><input class="phoneCode" type="text" placeholder="请输入验证码">
         <button class="getCode">点击获取<i>30</i></button>
     </div>
     <div class="item-1">
@@ -51,9 +51,7 @@
         $('.submit').on('click', function () {
             checkInputMsg()
         })
-
-
-    })
+    });
 
     function cutTimeDown() {
         let Time = Number($('.getCode').find('i').text());
@@ -67,7 +65,10 @@
     }
 
     function checkInputMsg() {
-        const input = document.querySelectorAll('input')
+        const input = document.querySelectorAll('input');
+        const tel = $.trim($('.tel').val()), password = $.trim($('.password').val()),
+            username = $.trim($('.username').val()), inviteCode = $.trim($('.inviteCode').val()),
+            phoneCode = $.trim($('.phoneCode').val())
         for (let i = 0; i < input.length; i++) {
             if (input[i].value === '' || input[i].value === null) {
                 return ((i) => {
@@ -89,10 +90,24 @@
                             break;
                     }
                 })(i);
-                break;
-
             }
         }
+        if (input[1].value.trim() !== input[2].value.trim()) {
+            $.toast('两次输入的密码不一致')
+        } else if (input[0].value.trim().length !== 11) {
+            $.toast('请输入正确的手机号')
+        } else {
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: {'tel': tel, 'password': password, 'inviteCode': inviteCode, 'phoneCode': phoneCode},
+                success: (data) => {
+                    $.toast('注册成功，跳转到首页！');
+                    //location.href = 'index.html'
+                }
+            })
+        }
+
 
     }
 

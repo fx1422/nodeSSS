@@ -56,9 +56,10 @@ function toDOU(n) {
     return n < 10 ? '0' + n : '' + n
 }
 
-function time2date(timestamp) {
-    var oDate = new Date();
-    oDate.setTime(timestamp * 1000)
+function time2date(tt) {
+    const timestamp = Date.parse(tt)
+    const oDate = new Date();
+    oDate.setTime(timestamp)
     return oDate.getFullYear() + '-' + toDOU(oDate.getMonth() + 1) + '-' + toDOU(oDate.getDate()) + ' ' + toDOU(oDate.getHours()) + ':' + toDOU(oDate.getMinutes())
         + ':' + toDOU(oDate.getSeconds())
 
